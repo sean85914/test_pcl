@@ -1,0 +1,19 @@
+* Euclidean Cluster Extraction 
+http://www.pointclouds.org/documentation/tutorials/cluster_extraction.php
+	* SACSegmentation
+	http://docs.pointclouds.org/trunk/classpcl_1_1_s_a_c_segmentation.html
+	* EuclideanClusterExtraction
+	http://docs.pointclouds.org/1.7.1/classpcl_1_1_euclidean_cluster_extraction.html
+* Plane model segmentation (Similar with above)
+http://www.pointclouds.org/documentation/tutorials/planar_segmentation.php#planar-segmentation
+* Extracting indices from a PointCloud
+http://pointclouds.org/documentation/tutorials/extract_indices.php
+	* PointIndices http://docs.pointcl ouds.org/trunk/structpcl_1_1_point_indices.html
+* StatisticalOutlierRemoval filter
+http://pointclouds.org/documentation/tutorials/statistical_outlier.php
+	* StatisticalOutlierRemoval http://docs.pointclouds.org/1.7.1/classpcl_1_1_statistical_outlier_removal.html
+* Estimating Surface Normals in a Pointcloud
+http://pointclouds.org/documentation/tutorials/normal_estimation.php
+	* NormalEstimation http://docs.pointclouds.org/1.7.1/classpcl_1_1_normal_estimation.html
+* PCA (Priciple Component Analysis) 
+http://docs.pointclouds.org/1.5.1/classpcl_1_1_p_c_a.html

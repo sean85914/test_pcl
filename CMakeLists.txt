@@ -11,13 +11,17 @@ add_definitions(${PCL_DEFINITIONS})
 add_executable (voxel voxel_grid.cpp)
 target_link_libraries (voxel ${PCL_LIBRARIES})	
 
+add_executable (color color.cpp)
+target_link_libraries (color ${PCL_LIBRARIES})
+
 add_executable (cluster_extraction cluster_extraction.cpp)
 target_link_libraries (cluster_extraction ${PCL_LIBRARIES})	
 
-add_executable (pcl_visualizer pcd_visualization.cpp)
-target_link_libraries (pcl_visualizer ${PCL_LIBRARIES})
+add_executable (removal statistical_removal.cpp)
+target_link_libraries(removal ${PCL_LIBRARIES})
 
-add_executable (pcl_visual_xyz pcd_visual_xyz.cpp)
-target_link_libraries (pcl_visual_xyz ${PCL_LIBRARIES})
+add_executable (pca_test pca.cpp)
+target_link_libraries (pca_test ${PCL_LIBRARIES})
+
 
 

@@ -1,3 +1,4 @@
+// Revised from: http://www.pointclouds.org/documentation/tutorials/cluster_extraction.php
 #include <pcl/ModelCoefficients.h>
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
@@ -17,17 +18,18 @@ main (int argc, char** argv)
   // Read in the cloud data
   pcl::PCDReader reader;
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZRGB>), cloud_f (new pcl::PointCloud<pcl::PointXYZRGB>);
-  reader.read (argv[1], *cloud);
+  std::stringstream si;
+  si << "../strawberry_" << argv[1] << ".pcd";
+  reader.read (si.str(), *cloud);
   std::cout << "PointCloud before filtering has: " << cloud->points.size () << " data points." << std::endl; //*
 
-  // Create the filtering object: downsample the dataset using a leaf size of 0.5cm
+  // Create the filtering object: downsample the dataset using a leaf size of 0.1cm
   
   pcl::VoxelGrid<pcl::PointXYZRGB> vg;
   pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_filtered (new pcl::PointCloud<pcl::PointXYZRGB>);
   vg.setInputCloud (cloud);
-  //
+  // Coefficients tuned by hand
   vg.setLeafSize (0.001f, 0.001f, 0.001f);
-  //
   vg.filter (*cloud_filtered);
   std::cout << "PointCloud after filtering has: " << cloud_filtered->points.size ()  << " data points." << std::endl; //*
 
@@ -40,10 +42,10 @@ main (int argc, char** argv)
   seg.setOptimizeCoefficients (true);
   seg.setModelType (pcl::SACMODEL_SPHERE);
   seg.setMethodType (pcl::SAC_RANSAC);
-  //
+  // Changeable coefficients
   seg.setMaxIterations (1000);
   seg.setDistanceThreshold (0.0005);
-  //
+  
   int i=0, nr_points = (int) cloud_filtered->points.size ();
   while (cloud_filtered->points.size () > 0.3 * nr_points)
   {
@@ -78,7 +80,7 @@ main (int argc, char** argv)
   std::vector<pcl::PointIndices> cluster_indices;
   pcl::EuclideanClusterExtraction<pcl::PointXYZRGB> ec;
   //
-  ec.setClusterTolerance (0.01); // 2cm
+  ec.setClusterTolerance (0.01); // 1cm
   ec.setMinClusterSize (100);
   ec.setMaxClusterSize (25000);
   ec.setSearchMethod (tree);
@@ -98,7 +100,7 @@ main (int argc, char** argv)
 
     std::cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." << std::endl;
     std::stringstream ss;
-    ss << "cloud_cluster_" << j << ".pcd";
+    ss << "extraction/strawberry_" << argv[1] << "_extraction_"<< j << ".pcd";
     writer.write<pcl::PointXYZRGB> (ss.str (), *cloud_cluster, false); //*
     j++;
   }

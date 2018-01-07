@@ -29,10 +29,8 @@ main (int argc, char** argv)
 
   pcl::PCDWriter writer;
   writer.write<pcl::PointXYZ> ("table_scene_lms400_inliers.pcd", *cloud_filtered, false);
-
   sor.setNegative (true);
   sor.filter (*cloud_filtered);
   writer.write<pcl::PointXYZ> ("table_scene_lms400_outliers.pcd", *cloud_filtered, false);
-
   return (0);
 }

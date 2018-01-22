@@ -26,4 +26,8 @@ target_link_libraries (pca_test ${PCL_LIBRARIES})
 add_executable (pca_visual visual_pca.cpp)
 target_link_libraries (pca_visual ${PCL_LIBRARIES})
 
+add_executable (pcl_visual_xyz pcd_visual_xyz.cpp)
+target_link_libraries (pcl_visual_xyz ${PCL_LIBRARIES})
 
+add_executable (pcl_visualizer pcd_visualization.cpp)
+target_link_libraries (pcl_visualizer ${PCL_LIBRARIES})

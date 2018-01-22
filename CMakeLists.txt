@@ -23,5 +23,7 @@ target_link_libraries(removal ${PCL_LIBRARIES})
 add_executable (pca_test pca.cpp)
 target_link_libraries (pca_test ${PCL_LIBRARIES})
 
+add_executable (pca_visual visual_pca.cpp)
+target_link_libraries (pca_visual ${PCL_LIBRARIES})
 
 

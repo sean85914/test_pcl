@@ -20,8 +20,12 @@ int main(int argc, char** argv)
 		return 0;
 	}
 	// Threshold tuned by hand
-	int r_thres = 140;
-
+	/*int r_thres = atoi(argv[3]);
+	int g_thres = atoi(argv[4]);
+	int b_thres = atoi(argv[5]);*/
+	int r_thres = 130;
+	int g_thres = 140;
+	int b_thres = 140;
 	reader.read (argv[1], *cloud);
 	int start_s = clock();
 	int length = cloud->points.size();
@@ -29,7 +33,7 @@ int main(int argc, char** argv)
 	int count = 0;
 	for(int i = 0; i < length; ++i)
 	{
-		if(cloud->points[i].r > r_thres && cloud->points[i].g < r_thres)
+		if(cloud->points[i].r > r_thres && cloud->points[i].g < g_thres && cloud->points[i].b < b_thres)
 		{
 			++count;
 		}
@@ -43,7 +47,7 @@ int main(int argc, char** argv)
 	int j = 0;
 	for(int i = 0; i < length ; ++i)
 	{
-		if(cloud->points[i].r>r_thres && cloud->points[i].g < r_thres)
+		if(cloud->points[i].r>r_thres && cloud->points[i].g < g_thres && cloud->points[i].b < b_thres)
 		{
 			clone.points[j].x = cloud->points[i].x;
 			clone.points[j].y = cloud->points[i].y;

@@ -1,1 +1,1 @@
-strawberry_pointcloud > cluster_extraction > color > statistical_outlier_removal > pca
+strawberry pointcloud > voxel grid downsampling > color filter > statistical outlier removal > pca

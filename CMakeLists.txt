@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 
 project(outlier)
 
-find_package(PCL 1.2 REQUIRED)
+find_package(PCL 1.7 REQUIRED)
 
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
@@ -31,3 +31,12 @@ target_link_libraries (pcl_visual_xyz ${PCL_LIBRARIES})
 
 add_executable (pcl_visualizer pcd_visualization.cpp)
 target_link_libraries (pcl_visualizer ${PCL_LIBRARIES})
+
+add_executable (icp icp.cpp)
+target_link_libraries (icp ${PCL_LIBRARIES})
+
+add_executable (min_cut min_cut_segmentation.cpp)
+target_link_libraries (min_cut ${PCL_LIBRARIES})
+
+add_executable (color_filter color_filter.cpp)
+target_link_libraries (color_filter ${PCL_LIBRARIES})
